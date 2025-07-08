@@ -1,0 +1,755 @@
+/* 聊天页样式升级 */
+#chat-page {
+    background: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 聊天页头部 */
+.chat-header {
+    background: var(--primary-color);
+    padding: 1.2rem 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.3rem;
+    cursor: pointer;
+    margin-right: 1.2rem;
+    transition: var(--transition);
+}
+
+.chat-header button:hover {
+    transform: translateX(-3px);
+}
+
+.chat-header h2 {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    font-size: 1.4rem;
+}
+
+/* 聊天消息区域 */
+.chat-messages {
+    background: 
+        rgba(255, 255, 254, 0.75),
+        url('../bgimg.jpg') no-repeat center center !important;
+    background-size: cover !important;
+    flex: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    position: relative;
+}
+
+/* 消息样式 */
+.message {
+    max-width: 80%;
+    margin-bottom: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.message.user {
+    align-self: flex-end;
+    max-width: 75%;
+}
+
+.message.system {
+    align-self: flex-start;
+    max-width: 90%;
+}
+
+.message-content {
+    padding: 1.2rem 1.8rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.message.user .message-content {
+    background: var(--primary-color);
+    color: var(--text-light);
+    border-bottom-right-radius: 4px;
+}
+
+.message.system .message-content {
+    background: var(--chat-system-bg);
+    border-bottom-left-radius: 4px;
+    border: 1px solid rgba(43, 44, 52, 0.08);
+}
+
+/* 消息文本样式增强 */
+.message-content p {
+    margin: 0;
+}
+
+.message-content .highlight {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* 功能胶囊 */
+.function-capsule {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.function-capsule button {
+    background: rgba(98, 70, 234, 0.08);
+    border: 1px solid rgba(98, 70, 234, 0.2);
+    border-radius: 50px;
+    padding: 0.7rem 1.4rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--primary-color);
+}
+
+.function-capsule button:hover {
+    background: rgba(98, 70, 234, 0.15);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* 功能胶囊整体样式优化 */
+.function-capsules {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.function-capsule {
+    margin-top: 0;
+}
+
+.function-capsules-container {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    flex-wrap: wrap;
+}
+
+/* 输入区域 */
+.chat-input {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-top: 1px solid rgba(43, 44, 52, 0.08);
+    z-index: 10;
+    position: relative;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 1px solid rgba(43, 44, 52, 0.1);
+    border-radius: 12px;
+    margin-right: 1rem;
+    font-family: inherit;
+    font-size: 1.05rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(98, 70, 234, 0.15);
+}
+
+.chat-input button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.chat-input button:hover {
+    background: var(--secondary-color);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 输入提示 */
+.input-hint {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0.5rem 0;
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.input-hint {
+    margin-left: 12px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-style: italic;
+    background: rgba(98, 70, 234, 0.1);
+    padding: 6px 12px;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+/* 正在输入效果 */
+.system-typing {
+    display: flex;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 18px;
+    max-width: 60px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+    box-shadow: var(--shadow-sm);
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: typingAnimation 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: 0s; }
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* 示例问题下拉框 */
+.example-dropdown {
+    position: fixed; /* 改为固定定位，不依赖于父元素 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%; /* 宽度改为百分比 */
+    max-width: 600px; /* 添加最大宽度 */
+    bottom: 100px; /* 距离底部固定距离 */
+    max-height: 300px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000; /* 增加z-index确保在顶层 */
+    overflow: hidden;
+    visibility: hidden; /* 改用visibility而不是display */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(-50%) translateY(20px);
+    border: 1px solid rgba(43, 44, 52, 0.1);
+}
+
+.example-dropdown.active {
+    visibility: visible; /* 改用visibility而不是display */
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.example-dropdown {
+    max-height: 450px; /* 增加高度以适应分页功能 */
+}
+
+/* 下拉框头部 */
+.dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(43, 44, 52, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.dropdown-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.close-dropdown {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 5px;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.close-dropdown:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 现代化示例问题网格布局 */
+.examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 16px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.example-card {
+    background: linear-gradient(135deg, rgba(98, 70, 234, 0.05) 0%, rgba(98, 70, 234, 0.02) 100%);
+    border: 1px solid rgba(98, 70, 234, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.example-card:hover {
+    background: linear-gradient(135deg, rgba(98, 70, 234, 0.1) 0%, rgba(98, 70, 234, 0.05) 100%);
+    border-color: rgba(98, 70, 234, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(98, 70, 234, 0.15);
+}
+
+.example-card:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.example-text {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.example-icon {
+    color: rgba(98, 70, 234, 0.6);
+    font-size: 12px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform: translateX(-5px);
+}
+
+.example-card:hover .example-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 分页控件 */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 12px;
+    border-top: 1px solid rgba(43, 44, 52, 0.05);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.pagination-btn {
+    background: rgba(98, 70, 234, 0.1);
+    border: 1px solid rgba(98, 70, 234, 0.2);
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--primary-color);
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: rgba(98, 70, 234, 0.2);
+    border-color: rgba(98, 70, 234, 0.4);
+    transform: scale(1.05);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.page-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(98, 70, 234, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-indicator.active {
+    background: var(--primary-color);
+    transform: scale(1.2);
+}
+
+.page-indicator:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* 空状态 */
+.empty-examples {
+    padding: 40px 20px;
+    text-align: center;
+    color: #aaa;
+    font-style: italic;
+}
+
+.example-list-container {
+    max-height: 350px;
+    overflow: hidden;
+}
+
+/* 标签式UI */
+.tabs-container {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid rgba(43, 44, 52, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 5px;
+}
+
+.tab {
+    padding: 12px 16px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-bottom: 2px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.tab:hover {
+    background-color: rgba(98, 70, 234, 0.05);
+}
+
+.tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    background-color: rgba(98, 70, 234, 0.1);
+}
+
+/* 聊天页响应式布局 */
+@media (max-width: 480px) {
+    .chat-messages {
+        height: calc(100% - 120px);
+        padding: 1.2rem;
+    }
+    
+    .message-content {
+        padding: 0.8rem 1.2rem;
+    }
+}
+
+/* 整体运势解忧项目的选择界面样式 */
+.complete-selection-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f4ff;
+    border-radius: 12px;
+    padding: 16px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.selection-section {
+    margin-bottom: 16px;
+}
+
+.selection-section h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.selection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+@media (max-width: 480px) {
+    .selection-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.selection-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.selection-item:hover {
+    background-color: #f5f5ff;
+    border-color: #c0c0ff;
+}
+
+.selection-item.selected {
+    background-color: #6246ea;
+    color: white;
+    border-color: #5035d8;
+}
+
+.confirm-selection-button {
+    align-self: center;
+    margin-top: 16px;
+    background-color: #6246ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.confirm-selection-button:hover {
+    background-color: #5035d8;
+}
+
+/* 输入提示样式 */
+.input-hint {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+/* DeepSeek API 响应样式 */
+.reasoning-content {
+    font-size: 0.85em;
+    color: rgba(98, 70, 234, 0.7);
+    background: rgba(98, 70, 234, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 3px solid rgba(98, 70, 234, 0.3);
+    line-height: 1.5;
+}
+
+.reasoning-title {
+    display: block;
+    font-weight: 600;
+    color: rgba(98, 70, 234, 0.8);
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.answer-content {
+    font-size: 1em;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-top: 8px;
+}
+
+/* Markdown 样式优化 */
+.md-heading {
+    margin: 16px 0 8px 0;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.answer-content h3,
+.reasoning-content h3 {
+    font-size: 1.1em;
+    margin: 12px 0 6px 0;
+}
+
+.answer-content h4,
+.reasoning-content h4 {
+    font-size: 1.05em;
+    margin: 10px 0 5px 0;
+}
+
+.answer-content h5,
+.reasoning-content h5 {
+    font-size: 1em;
+    margin: 8px 0 4px 0;
+}
+
+.answer-content h6,
+.reasoning-content h6 {
+    font-size: 0.95em;
+    margin: 6px 0 3px 0;
+}
+
+.answer-content ul,
+.reasoning-content ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.answer-content ol,
+.reasoning-content ol {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+.answer-content li,
+.reasoning-content li {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+.answer-content strong,
+.reasoning-content strong {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.answer-content em,
+.reasoning-content em {
+    font-style: italic;
+    color: rgba(98, 70, 234, 0.8);
+}
+
+.answer-content code,
+.reasoning-content code {
+    background: rgba(98, 70, 234, 0.1);
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.9em;
+}
+
+.answer-content pre,
+.reasoning-content pre {
+    background: rgba(98, 70, 234, 0.05);
+    padding: 12px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 8px 0;
+}
+
+.answer-content pre code,
+.reasoning-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.subtle-hr {
+    border: none;
+    height: 1px;
+    background: rgba(98, 70, 234, 0.2);
+    margin: 16px 0;
+}
+
+.answer-content a,
+.reasoning-content a {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(98, 70, 234, 0.3);
+    transition: all 0.2s ease;
+}
+
+.answer-content a:hover,
+.reasoning-content a:hover {
+    border-bottom-color: var(--primary-color);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    /* 移动端消息宽度优化 */
+    .message.system {
+        max-width: 95%;
+    }
+
+    .message.user {
+        max-width: 85%;
+    }
+
+    /* 移动端示例问题网格调整为单列 */
+    .examples-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .example-card {
+        min-height: 60px;
+        padding: 12px;
+    }
+
+    .example-text {
+        font-size: 13px;
+    }
+
+    /* 移动端分页控件调整 */
+    .pagination-container {
+        padding: 12px;
+        gap: 8px;
+    }
+
+    .pagination-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* 移动端功能胶囊调整 */
+    .function-capsules {
+        gap: 8px;
+        margin-top: 6px;
+    }
+
+    .function-capsule {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 小屏幕设备进一步优化 */
+    .message.system {
+        max-width: 98%;
+    }
+
+    .message-content {
+        padding: 1rem 1.2rem;
+        font-size: 1rem;
+    }
+
+    /* 小屏幕示例问题卡片 */
+    .example-card {
+        min-height: 50px;
+        padding: 10px;
+    }
+
+    .example-text {
+        font-size: 12px;
+        line-height: 1.3;
+    }
+}

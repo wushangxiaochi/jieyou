@@ -1,0 +1,414 @@
+/* 首页样式升级 */
+#home-page {
+    background: 
+        var(--bg-gradient),
+        url('../bgimg.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow-y: auto;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.5rem;
+    min-height: 100%;
+    gap: 2rem;
+}
+
+.guide-text {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.guide-text h1 {
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 2.5rem;
+    letter-spacing: -0.03em;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: inline-block;
+}
+
+.guide-text h1::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+/* 主题选择部分 */
+.theme-selection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.theme-item {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--shadow-md);
+}
+
+.theme-item::before {
+    display: none;
+}
+
+/* 每个主题项的特定渐变边框 */
+.theme-item[data-theme="事业"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #6246EA, #3BBA9C);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.theme-item[data-theme="子女"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #E45858, #FF9D4A);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.theme-item[data-theme="财富"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #3BBA9C, #6246EA);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.theme-item[data-theme="父母"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #FF9D4A, #E45858);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.theme-item[data-theme="婚姻"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #9173E6, #E45858);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.theme-item[data-theme="健康"] {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), 
+                     linear-gradient(135deg, #EC6081, #3BBA9C);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+/* 选中状态样式 */
+.theme-item.selected {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(98, 70, 234, 0.2), var(--shadow-md);
+    transform: scale(1.05);
+    position: relative;
+}
+
+.theme-item.selected::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    border-radius: 14px;
+    z-index: 0;
+    margin: 3px;
+}
+
+.theme-item.selected i {
+    color: var(--primary-color);
+    transform: scale(1.2);
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.theme-item.selected span {
+    color: var(--text-primary);
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.theme-item.selected::after {
+    content: "✓";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: var(--shadow-sm);
+    z-index: 3;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.theme-item i {
+    position: relative;
+    z-index: 2;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.theme-item span {
+    position: relative;
+    z-index: 2;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.theme-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.theme-item:hover i {
+    transform: scale(1.15);
+    color: var(--primary-color);
+}
+
+/* 确保每个主题卡片有不同的微妙视觉变化 */
+.theme-item:nth-child(1)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(98,70,234,0.3)); }
+.theme-item:nth-child(2)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(228,88,88,0.3)); }
+.theme-item:nth-child(3)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(59,186,156,0.3)); }
+.theme-item:nth-child(4)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,173,66,0.3)); }
+.theme-item:nth-child(5)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(145,115,230,0.3)); }
+.theme-item:nth-child(6)::after { background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(236,96,129,0.3)); }
+
+/* 主题补充信息 */
+.theme-supplement {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.theme-supplement label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+}
+
+.theme-supplement input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: var(--card-bg);
+    font-size: 1.1rem;
+    font-family: inherit;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.theme-supplement input:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(98, 70, 234, 0.2), var(--shadow-md);
+}
+
+/* 开始按钮 */
+.confirm-button-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#start-button {
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 50px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+}
+
+#start-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
+}
+
+#start-button:hover:not(.disabled)::before {
+    transform: translateX(100%);
+}
+
+#start-button:hover:not(.disabled) {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    background: var(--secondary-color);
+}
+
+#start-button.disabled {
+    background: var(--button-disabled);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* 首页响应式布局 */
+@media (max-width: 1024px) {
+    .theme-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+    
+    .content-wrapper {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .guide-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .theme-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .theme-item {
+        padding: 1.2rem 1rem;
+    }
+    
+    .theme-item i {
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .theme-item span {
+        font-size: 1.1rem;
+    }
+    
+    .content-wrapper {
+        padding: 3rem 1rem;
+        gap: 2.5rem;
+        justify-content: space-around;
+        min-height: 100vh;
+    }
+    
+    .guide-text {
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 2rem 1rem 3rem;
+        gap: 2.5rem;
+        justify-content: space-between;
+        min-height: 100vh;
+    }
+    
+    .guide-text {
+        margin-top: 1.5rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .guide-text h1 {
+        font-size: 1.5rem;
+    }
+    
+    .guide-text h1::after {
+        width: 50px;
+        height: 3px;
+        bottom: -8px;
+    }
+    
+    .theme-selection {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+        margin-top: 1rem;
+    }
+    
+    .theme-item {
+        padding: 1rem 0.8rem;
+    }
+    
+    .theme-item i {
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .theme-item span {
+        font-size: 1rem;
+    }
+    
+    .theme-supplement input {
+        padding: 0.8rem 1rem;
+    }
+    
+    #start-button {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .theme-supplement {
+        margin-top: 1.5rem;
+    }
+    
+    .confirm-button-container {
+        margin-top: 1.5rem;
+        margin-bottom: 2rem;
+    }
+} 

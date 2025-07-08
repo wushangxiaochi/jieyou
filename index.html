@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解忧杂事掂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 首页 -->
+        <div id="home-page" class="page active">
+            <div class="content-wrapper">
+                <div class="guide-text">
+                    <h1>请选择心事主题，我们一起解忧</h1>
+                </div>
+                
+                <div class="theme-selection">
+                    <div class="theme-item" data-theme="事业">
+                        <i class="fas fa-briefcase"></i>
+                        <span>事业</span>
+                    </div>
+                    <div class="theme-item" data-theme="子女">
+                        <i class="fas fa-child"></i>
+                        <span>子女</span>
+                    </div>
+                    <div class="theme-item" data-theme="财富">
+                        <i class="fas fa-coins"></i>
+                        <span>财富</span>
+                    </div>
+                    <div class="theme-item" data-theme="父母">
+                        <i class="fas fa-heart"></i>
+                        <span>父母</span>
+                    </div>
+                    <div class="theme-item" data-theme="婚姻">
+                        <i class="fas fa-ring"></i>
+                        <span>婚姻</span>
+                    </div>
+                    <div class="theme-item" data-theme="健康">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>健康</span>
+                    </div>
+                </div>
+                
+                <div class="theme-supplement">
+                    <label for="supplement-input">其他主题</label>
+                    <input type="text" id="supplement-input" maxlength="10" placeholder="最多10个字">
+                </div>
+                
+                <div class="confirm-button-container">
+                    <button id="start-button" class="disabled">开始解忧</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 聊天页 -->
+        <div id="chat-page" class="page">
+            <div class="chat-header">
+                <button id="back-button"><i class="fas fa-arrow-left"></i></button>
+                <h2>解忧杂事掂</h2>
+            </div>
+            
+            <div class="chat-messages">
+                <div class="message system">
+                    <div class="message-content">
+                        欢迎来到解忧杂事掂，我看到你关心的是"事业"方面的困扰。请告诉我你现在遇到的具体问题？
+                    </div>
+                </div>
+                
+                <div class="message user">
+                    <div class="message-content">
+                        我最近工作压力很大，感觉自己总是达不到领导的期望
+                    </div>
+                </div>
+                
+                <div class="message system">
+                    <div class="message-content">
+                        我理解你的感受。在传统文化中，"吃得苦中苦，方为人上人"，但这不意味着要勉强自己超越极限。让我们通过一种古老的方式来看看你当前的状态。
+                    </div>
+                    <div class="function-capsule">
+                        <button>抽取卦象</button>
+                    </div>
+                </div>
+                
+                <div class="message system">
+                    <div class="message-content">
+                        你抽到了"泰卦"，上坤下乾，表示通达、顺利。天地交泰，阴阳和谐，预示着困境将会消除，事业会有转机。建议你在困境中保持平和的心态，适时调整自己的期望和工作方式。
+                    </div>
+                    <div class="function-capsule">
+                        <button>查看详解</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" placeholder="请输入您的心事...">
+                <button id="send-button"><i class="fas fa-paper-plane"></i></button>
+            </div>
+
+            <div id="example-dropdown" class="example-dropdown">
+                <div class="dropdown-header">
+                    <h3>推荐问法</h3>
+                    <button class="close-dropdown"><i class="fas fa-times"></i></button>
+                </div>
+                <ul class="example-list">
+                    <!-- 这里将由JavaScript动态填充 -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确保正确的引入顺序 -->
+    <script src="examples.js"></script>
+    <!-- 引入拆分后的模块文件 -->
+    <script src="js/core.js"></script>
+    <script src="js/api-service.js"></script>
+    <script src="js/steps.js"></script>
+    <script src="js/numbers-project.js"></script>
+    <script src="js/complete-project.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
